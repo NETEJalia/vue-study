@@ -6,6 +6,7 @@
                 v-on:change="markComplete"
             >
             {{todo.title}}
+            <button class="del" @click="$emit('del-todo', 'todo.id')">X</button>
         </p>
     </div>
 </template>
@@ -13,7 +14,12 @@
 <script>
 export default {
     name: 'ToDoItem',
-    props: ["todo"]
+    props: ["todo"],
+    methods: {
+        markComplete () {
+            this.todo.completed = !this.todo.completed;
+        }
+    }
 }
 </script>
 
